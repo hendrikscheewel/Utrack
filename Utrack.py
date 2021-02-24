@@ -169,7 +169,7 @@ def read_gps(p):
             if re.search("^latitude", line):
                 try:
                     lat = line.split()
-                    if re.match(".\d+.\d+", lat[1]):
+                    if re.match("-?\d+\.\d+", lat[1]):
                         latitude = lat[1]
                     else:
                         subprocess.Popen(["truncate", "-s", "0", temp_file], shell=False)
@@ -180,7 +180,7 @@ def read_gps(p):
             if re.search("^longtide", line): #longtide bug in test_gps
                 try:
                     long = line.split()
-                    if re.match(".\d+.\d+", long[1]):
+                    if re.match("-?\d+\.\d+", long[1]):
                         longitude = long[1]
                     else:
                         subprocess.Popen(["truncate", "-s", "0", temp_file], shell=False)
